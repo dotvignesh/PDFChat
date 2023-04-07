@@ -82,13 +82,6 @@ async def main():
 
         st.session_state['ready'] = True
 
-        if 'generated' in st.session_state:
-            st.session_state['generated'] = ["Welcome! You can now ask any questions regarding " + uploaded_file.name]
-
-        if 'past' in st.session_state:
-            st.session_state['past'] = ["Hey!"]
-
-
     st.divider()
 
     if st.session_state['ready']:
