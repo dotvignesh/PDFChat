@@ -3,3 +3,4 @@ gpt4.pdf
 PDF_Chat.ipynb
 .ipynb_checkpoints
 *.pkl
+.DS_Store

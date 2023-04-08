@@ -4,7 +4,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
 from langchain.chat_models import ChatOpenAI
-from langchain.chains import ChatVectorDBChain
+from langchain.chains import ConversationalRetrievalChain
 import pickle
 from pathlib import Path
 from dotenv import load_dotenv
@@ -80,7 +80,7 @@ async def main():
             file = uploaded_file.read()
             # pdf = PyPDF2.PdfFileReader()
             vectors = await getDocEmbeds(io.BytesIO(file), uploaded_file.name)
-            qa = ChatVectorDBChain.from_llm(ChatOpenAI(model_name="gpt-3.5-turbo"), vectors, return_source_documents=True)
+            qa = ConversationalRetrievalChain.from_llm(ChatOpenAI(model_name="gpt-3.5-turbo"), retriever=vectors.as_retriever(), return_source_documents=True)
 
         st.session_state['ready'] = True
 
