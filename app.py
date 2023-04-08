@@ -49,17 +49,19 @@ async def main():
         return vectors
     
 
-    async def conversational_chat(query, chat_history):
-        result = qa({"question": query, "chat_history": chat_history})
-        chat_history.append((query, result["answer"]))
-        # print("Answer:")
-        # print(result["answer"])
+    async def conversational_chat(query):
+        result = qa({"question": query, "chat_history": st.session_state['history']})
+        st.session_state['history'].append((query, result["answer"]))
+        # print("Log: ")
+        # print(st.session_state['history'])
         return result["answer"]
 
 
     llm = ChatOpenAI(model_name="gpt-3.5-turbo")
     chain = load_qa_chain(llm, chain_type="stuff")
-    chat_history = []
+
+    if 'history' not in st.session_state:
+        st.session_state['history'] = []
 
 
     #Creating the chatbot interface
@@ -104,7 +106,7 @@ async def main():
                 submit_button = st.form_submit_button(label='Send')
 
             if submit_button and user_input:
-                output = await conversational_chat(user_input, chat_history)
+                output = await conversational_chat(user_input)
                 st.session_state['past'].append(user_input)
                 st.session_state['generated'].append(output)
 
