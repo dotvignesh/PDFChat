@@ -3,6 +3,10 @@
 The PDFChat app allows you to chat with your PDF files using the power of langchain, OpenAI Embeddings, and GPT3.5 in the backend. 
 It uses Streamlit for the user interface.
 
+## Demo
+
+https://user-images.githubusercontent.com/19832025/230705607-00e830c1-0181-49b6-ba92-4c9294b6cec3.mp4 
+
 ## Installation
 
 To install and run the application, follow the instructions below:
