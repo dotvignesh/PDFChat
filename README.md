@@ -19,32 +19,38 @@ To install and run the application, follow the instructions below:
    cd PDFChat
    ```
 
-3. Create a conda environment based on the requirements.txt file:
+3. Create a conda environment:
 
    ```bash
-   conda create --name pdfchat --file requirements.txt
+   conda create --name pdfchat
    ```
    
-4. Activate the new conda environment
+4. Activate the new conda environment:
 
    ```bash
    conda activate pdfchat
    ```
+   
+5. Install the required packages:
 
-5. Get your OpenAI API Key by following these steps:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+6. Get your OpenAI API Key by following these steps:
    - Go to [OpenAI Website](https://platform.openai.com/account/api-keys)
    - Create an account or log in
    - Navigate to the "API Keys" section
    - Click on the "Create new secret key" button (or use an existing one)
    - Copy the API key
 
-6. Create a `.env` file in the root of the repository directory, and add the following line, replacing `<your-api-key>` with your actual API key:
+7. Create a `.env` file in the root of the repository directory, and add the following line, replacing `<your-api-key>` with your actual API key:
 
    ```bash
    OPENAI_API_KEY=<your-api-key>
    ```
 
-7. Run the application using streamlit:
+8. Run the application using streamlit:
 
    ```bash
    streamlit run app.py
